@@ -1,48 +1,26 @@
 <template>
   <div id="app">
-     <TodoHeader></TodoHeader>
-     <TodoInput v-on:addTodoItem="addOneItem"></TodoInput>
-     <TodoList v-bind:propsdata="todoItems" v-on:removeItem="removeOneItem"></TodoList>
-     <TodoFooter v-on:removeAll="removeAll"></TodoFooter>
+    <Header></Header>
+    <!-- 라우터 화면이 아래에 출력 -->
+    <router-link to="/input">입력</router-link>
+    <router-link to="/list">목록</router-link>
+    <router-view></router-view>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
-import TodoHeader from './components/TodoHeader.vue';
-import TodoList from './components/TodoList.vue';
-import TodoInput from './components/TodoInput.vue';
-import TodoFooter from './components/TodoFooter.vue';
+import Footer from './components/TodoFooter.vue';
+import Header from './components/TodoHeader.vue';
 
 export default {
-  data : function(){
-    return {
-      todoItems : []
-    }
-  },
-
   components : {
-    TodoHeader,
-    TodoList,
-    TodoInput,
-    TodoFooter,
+    Header,
+    Footer
   }
 }
 </script>
 
-<style> 
-body{
-  text-align: center;
-  background-color: #F6F6F6;
+<style>
 
-}
-input{
-  border-style: groove;
-  width: 200px;
-}
-button{
-  border-style: groove;
-}
-.shadow{
-  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.03);
-}
 </style>
