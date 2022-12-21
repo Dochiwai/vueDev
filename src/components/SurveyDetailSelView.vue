@@ -47,11 +47,6 @@ export default {
             minSelector:[]
         }
     },
-    watch: {
-        contents : function(){
-            console.log('gd')
-        }
-    },
     props: {
         item: {
             type: Object,
@@ -70,12 +65,22 @@ export default {
             }
         },
     },
+    watch:{
+        'item'(){
+            let len = item.questions[0].contents.length
+            console.log(len);
+            for(let i = 1; i < (len + 1); i++){
+                this.item.maxSelector.push(i);
+                this.item.minSelector.push(i);
+            }
+        }
+    },
     methods: {
         changeMax(e) {
             this.$emit('changeMaxChild',e);
         },
         changeMin(e){
-            thie.$emit('changeMinChild',e);
+            this.$emit('changeMinChild',e);
         },
         changeType(e){
             this.$emit('changeTypeChild',e);

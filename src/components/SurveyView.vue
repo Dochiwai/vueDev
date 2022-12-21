@@ -33,7 +33,7 @@ export default {
                         contents :[]
                     }
                 ]
-            }
+            },
         },
     },
     components: {

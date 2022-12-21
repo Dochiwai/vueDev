@@ -128,6 +128,16 @@ export default {
       survey : undefined
     };
   },
+  watch:{
+      'survey'() {
+        const index = this.itemList.indexOf(this.survey);
+        let target = this.itemList[index];
+        let len = this.itemList[index].questions[0].contents.length;
+        if(target.selectMax > len){
+          target.selectMax = len;
+        }
+      }
+  },
   methods: {
     createSurvey(){
       let newSurvey = {
@@ -192,9 +202,14 @@ export default {
       const index = this.itemList.indexOf(this.survey);
       let target = this.itemList[index].questions[0].contents;
       target.push('');
+      this.survey = undefined;
+      this.survey = this.itemList[index];
     },
     deleteContent(obj){
-      this.itemList[0].questions[0].contents.splice(obj,1)
+      const index = this.itemList.indexOf(this.survey);
+      this.itemList[index].questions[0].contents.splice(obj,1)
+      this.survey = undefined;
+      this.survey = this.itemList[index];
     } 
 
   },
