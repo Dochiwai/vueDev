@@ -4,7 +4,6 @@
             <input type="text" v-model="item.title" @input="changeTitle" placeholder="제목을 입력해주세요"><button @click="deleteSurvey()">삭제하기</button>
         </v-app-bar>
         <v-content style="padding: 24px 256px 72px 13px;">
-            투표 설명 {{ item.content }}<br/>
             <SurveySeleteViewVue v-if="item.type =='객관식'" :item="item" @addContentLastChild="addContent" @deleteContentLastChild="deleteContent"></SurveySeleteViewVue>
             <SurveyWriteViewVue v-if="item.type =='주관식'"></SurveyWriteViewVue>
             <SurveyVsSelViewVue v-if="item.type =='VS'"></SurveyVsSelViewVue>
