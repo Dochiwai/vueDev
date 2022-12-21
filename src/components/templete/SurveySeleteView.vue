@@ -1,9 +1,11 @@
 <template>
   <v-app>
-    <v-container v-for="(question) in item.questions" :key="question.title">
+    <v-container>
         <v-app-bar>
-            <span>1.</span> <input v-model="question.title" type="text" style="width:100%;"/>
+            <span>1.</span> <input v-model="item.questions[0].title" type="text" style="width:100%;"/>
         </v-app-bar>
+    </v-container>
+    <v-container v-for="(question) in item.questions" :key="question.title">
         <v-container v-for="(content,i) in question.contents" :key="i">
             <span>{{ i + 1 }}.</span> <input v-model="question.contents[i]" type="text" placeholder="정답을 입력해주세요." />
             <button @click="deleteContent(i)">삭제</button>

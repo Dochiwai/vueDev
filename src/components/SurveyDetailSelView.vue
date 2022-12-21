@@ -14,10 +14,9 @@
     <v-container fluid>
       <v-row align="center">
         <v-select
-          @click="rememberMaxBefore"
-          @change="changeMax"
           :items="itemLengthToArray"
-          v-model="item.selectMax"
+          v-model.number.lazy="item.selectMax"
+          @change="changeMax"
           label="최대 선택 갯수 입력"
         >
         </v-select>
@@ -26,9 +25,8 @@
     <v-container fluid>
       <v-row align="center">
         <v-select
-          @click="rememberMinBefore"
-          @change="changeMin"
           :items="itemLengthToArray"
+          @change="changeMin"
           v-model="item.selectMin"
           label="최소 선택 갯수 입력"
         >
@@ -43,8 +41,6 @@ export default {
   data() {
     return {
       typeSelector: ["객관식", "객관식(다중)", "주관식", "VS", "슬라이드바"],
-      beforeMaxData: 0,
-      beforeMinData: 0,
     };
   },
   props: {
@@ -65,7 +61,16 @@ export default {
       },
     },
   },
-  watch: {
+  watch: {/*
+    'item.selectMax' : {
+        handler(newValue,oldValue){
+            console.log("watch new value = " + newValue + " , oldvalue = "+ oldValue);
+            if(newValue < this.item.selectMin){
+                console.log("watch if new value = " + newValue + " , oldvalue = "+ oldValue);
+                this.changeMax(oldValue)
+            }
+        }
+    },*/
     item: {
       handler(newValue, oldValue) {
         let len = this.item.questions[0].contents.length;
@@ -89,27 +94,12 @@ export default {
     },
   },
   methods: {
-    rememberMaxBefore(e){ 
-        this.beforeMaxData = this.item.selectMax;
-    },
-    rememberMinBefore(e){ 
-        this.beforeMinData = this.item.selectMin;
-    },
     changeMax(e) {
-        if(this.item.selectMin > e){
-            alert("최소 선택 개수보다 더 작게 선택하지마")
-            this.$emit("changeMaxChild", this.beforeMaxData);
-        }else{
-            this.$emit("changeMaxChild", e);
-        }
+        console.log(" methods changeMax , changemax : " +e);
+        this.$emit("changeMaxChild", 3);
     },
     changeMin(e) {
-        if(this.item.selectMax < e){
-            alert("최대 선택 개수보다 더 크게 선택하지마");
-            this.item.selectMin = this.beforeMinData
-        }else{
-            this.$emit("changeMinChild", e);
-        }
+        this.$emit("changeMinChild", e);
     },
     changeType(e) {
       this.$emit("changeTypeChild", e);
@@ -117,10 +107,12 @@ export default {
   },
   computed: {
     itemLengthToArray() {
-      return Array.from(
-        { length: this.item.questions[0].contents.length },
-        (_, i) => i+1
-      );
+        if(this.item.questions[0] != undefined){
+             return Array.from(
+                { length: this.item.questions[0].contents.length },
+                (_, i) => i+1
+            );
+        }
     },
   },
 };

@@ -33,25 +33,41 @@
     <v-navigation-drawer app clipped right>
       <v-list>
         <SurveyDetailSelViewVue 
-        v-if="detailTrigger"
+        v-if="detailTrigger && this.survey.type == '객관식'"
         :item="survey"
         @changeMaxChild="changeMax"
         @changeMinChild="changeMin"
         @changeTypeChild="changeType"
         >
         </SurveyDetailSelViewVue>
+
+        <SurveyDetailWriteViewVue 
+        v-if="detailTrigger && this.survey.type == '주관식'"
+        :item="survey"
+        @changeTypeChild="changeType"
+        >
+        </SurveyDetailWriteViewVue>
+
+        <SurveyDetailVSViewVue 
+        v-if="detailTrigger && this.survey.type == 'VS'"
+        :item="survey"
+        @changeTypeChild="changeType"
+        >
+        </SurveyDetailVSViewVue>
       </v-list>
     </v-navigation-drawer>
 
     <v-main>
-      <SurveyViewVue
+      <div>
+        <SurveyViewVue
         v-if="detailTrigger"
         :item="survey"
         @titleFromChild="changeTitle"
         @deleteSurveyChild="deleteSurvey"
         @addContentChild="addContent"
         @deleteContentChild="deleteContent"
-      ></SurveyViewVue>
+        ></SurveyViewVue>
+      </div>
     </v-main>
 
     <v-footer app color="transparent" height="72" inset>
@@ -69,6 +85,8 @@
 
 <script>
 import SurveyDetailSelViewVue from './components/SurveyDetailSelView.vue';
+import SurveyDetailVSViewVue from './components/SurveyDetailVSView.vue';
+import SurveyDetailWriteViewVue from './components/SurveyDetailWriteView.vue';
 import SurveyViewVue from "./components/SurveyView.vue";
 
 export default {
@@ -76,6 +94,8 @@ export default {
   components: {
     SurveyViewVue,
     SurveyDetailSelViewVue,
+    SurveyDetailWriteViewVue,
+    SurveyDetailVSViewVue,
   },
   data() {
     return {
@@ -117,7 +137,7 @@ export default {
           selectMin : 0,
           selectMax : 0,
           type: "VS",
-          question : [
+          questions : [
             {
               title:'',
               contents:[],
@@ -176,6 +196,7 @@ export default {
       }
     },
     changeMax(value){
+      console.log( "app vue value " +value)
       const index = this.itemList.indexOf(this.survey);
       this.itemList[index].selectMax = value;
     },
@@ -185,8 +206,12 @@ export default {
     },
     changeType(value){
       const index = this.itemList.indexOf(this.survey);
+      let title = this.itemList[index].title;
+      let survey = this.createSurvey();
+      this.itemList[index] = survey
       this.itemList[index].type = value;
-      this.itemList[index].questions.splice(0);
+      this.itemList[index].title = title;
+      this.changeSruvey(this.itemList[index]);
     },
     addContent(){
       const index = this.itemList.indexOf(this.survey);
@@ -196,8 +221,11 @@ export default {
     deleteContent(obj){
       const index = this.itemList.indexOf(this.survey);
       this.itemList[index].questions[0].contents.splice(obj,1)
-    } 
-
+    },
+    changeQuestionTitle(value){
+      const index = this.itemList.indexOf(this.survey);
+      this.itemList[index].questions[0].title = value;
+    }
   },
 };
 </script>
