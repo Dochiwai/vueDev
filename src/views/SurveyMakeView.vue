@@ -257,8 +257,11 @@ export default {
     },
     saveSurvey(){
       const axios = require('axios')
+      console.log(this.itemList)
+      let stringify =JSON.stringify(this.itemList);
+      let json = JSON.parse(stringify)
       axios.post('/api/questionSave',{
-          list : this.itemList
+          list : json
       }).then((res)=>{
         console.log(res)
       })  
