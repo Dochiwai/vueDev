@@ -1,5 +1,10 @@
 <template>
     <v-app style="background-color: azure;">
+       <v-container>
+          <v-app-bar>
+              <span></span> <input v-model="item.title" type="text" style="width:100%;" readonly/>
+          </v-app-bar>
+      </v-container>
       <v-container>
           <v-app-bar>
               <span>1.</span> <input v-model="item.questions[0].title" type="text" style="width:100%;" readonly/>
@@ -25,7 +30,7 @@ export default {
     data() {
         return {
             textVal : {
-                
+
             }
         }
     },
