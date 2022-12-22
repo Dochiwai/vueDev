@@ -40,7 +40,7 @@
 export default {
   data() {
     return {
-      typeSelector: ["객관식", "객관식(다중)", "주관식", "VS", "슬라이드바"],
+      typeSelector: ["객관식", "주관식", "VS" ],
     };
   },
   props: {
