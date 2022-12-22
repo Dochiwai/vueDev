@@ -33,6 +33,9 @@
       <v-sheet color="grey lighten-5" height="72" width="100%">
         <button @click="previewSruvey">미리보기</button>
       </v-sheet>
+      <v-sheet color="grey lighten-5" height="72" width="100%">
+        <button @click="saveSurvey">저장하기</button>
+      </v-sheet>
     </v-navigation-drawer>
 
     <v-navigation-drawer app clipped right>
@@ -252,6 +255,14 @@ export default {
       this.doingTrigger = false;
       console.log(array);
     },
+    saveSurvey(){
+      const axios = require('axios')
+      axios.post('/api/questionSave',{
+          list : this.itemList
+      }).then((res)=>{
+        console.log(res)
+      })  
+    }
   },
 };
 </script>
