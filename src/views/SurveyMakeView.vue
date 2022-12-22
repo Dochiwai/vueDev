@@ -30,6 +30,9 @@
       <v-sheet color="grey lighten-5" height="72" width="100%">
         <button @click="addSurvey">추가하기</button>
       </v-sheet>
+      <v-sheet color="grey lighten-5" height="72" width="100%">
+        <button @click="previewSruvey">미리보기</button>
+      </v-sheet>
     </v-navigation-drawer>
 
     <v-navigation-drawer app clipped right>
@@ -84,12 +87,17 @@
     </v-footer>
     </v-container>
     <v-container v-if="doingTrigger == true">
-        
+        <SurveyDoViewVue 
+          :item="itemList" 
+          @previewCompleteChild="previewComplete"
+          :answer="answer"
+        ></SurveyDoViewVue>
     </v-container>
   </v-app>
 </template>
 
 <script>
+import SurveyDoViewVue from '@/components/SurveyDoView.vue';
 import SurveyDetailSelViewVue from '../components/SurveyDetailSelView.vue';
 import SurveyDetailVSViewVue from '../components/SurveyDetailVSView.vue';
 import SurveyDetailWriteViewVue from '../components/SurveyDetailWriteView.vue';
@@ -102,6 +110,7 @@ export default {
     SurveyDetailSelViewVue,
     SurveyDetailWriteViewVue,
     SurveyDetailVSViewVue,
+    SurveyDoViewVue,
   },
   data() {
     return {
@@ -143,7 +152,7 @@ export default {
           content: "Ccontent",
           selectMin : 0,
           selectMax : 0,
-          type: "VS",
+          type: "주관식",
           questions : [
             {
               title:'제발 알려주세요',
@@ -152,7 +161,9 @@ export default {
           ]
         },
       ],
-      survey : undefined
+      survey : undefined,
+      answer : [
+      ]
     };
   },
   methods: {
@@ -232,7 +243,15 @@ export default {
     changeQuestionTitle(value){
       const index = this.itemList.indexOf(this.survey);
       this.itemList[index].questions[0].title = value;
-    }
+    },
+    previewSruvey(){
+      this.doingTrigger = true;
+    },
+    previewComplete(array){
+      this.answer = array;
+      this.doingTrigger = false;
+      console.log(array);
+    },
   },
 };
 </script>
