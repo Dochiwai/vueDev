@@ -95,7 +95,9 @@ export default {
   },
   methods: {
     changeMax(e) {
-        console.log(" methods changeMax , changemax : " +e);
+        if(this.item.selectMin > e ){
+          alert("너무작아요");
+        }
         this.$emit("changeMaxChild", 3);
     },
     changeMin(e) {

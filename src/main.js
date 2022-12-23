@@ -4,10 +4,10 @@ import router from './router/index.js'
 import { store } from './store/store.js'
 import vuetify from './plugins/vuetify'
 import axios from "./plugins/axios";
+import vSelect from "vue-select";
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios;
-
 
 new Vue({
   axios,
