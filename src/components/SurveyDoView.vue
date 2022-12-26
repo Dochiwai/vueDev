@@ -29,6 +29,8 @@ import SurveyDoSelViewVue from './SurveyDoingTemplete/SurveyDoSelView.vue'
 import SurveyDoVsViewVue from './SurveyDoingTemplete/SurveyDoVsView.vue'
 import SurveyDoWriteViewVue from './SurveyDoingTemplete/SurveyDoWriteView.vue'
 
+const axios = require("axios");
+
 export default {
     components: {
         SurveyDoSelViewVue,
@@ -59,6 +61,21 @@ export default {
                 this.index += 1;
                 this.survey = this.item[this.index];
             }else{
+                var sendData = this.userAns
+                axios({
+                    method: "POST",
+                    url: '/api/answerSave',
+                    data: sendData,
+                    // header에서 JSON 타입의 데이터라는 것을 명시
+                    headers: {'Content-type': 'application/json'}
+                }).then((res)=>{
+                    alert("성공");
+                    // API로 부터 받은 데이터 출력
+                    console.log(res.data);
+                }).catch(error=>{
+                    console.log("실패");
+                    console.log(error);
+                });
                 this.$emit('previewCompleteChild',this.userAns);
             }
         },

@@ -55,7 +55,7 @@ export default {
         selected() {
             let obj = {
                 questionNo : this.index,
-                userAnswer : this.textVal.target.value
+                userAnswer : [this.textVal.target.value]
             }
             this.$emit('persnalComplete',obj);
         }
