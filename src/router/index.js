@@ -12,12 +12,12 @@ var router = new VueRouter({
       component: () => import("../views/SurveyMakeView.vue"),
     },
     {
-      path: "/view",
-      component: () => import("../views/MainView.vue"),
+      path: "/",
+      component: () => import("../components/maincomponent.vue"),
     },
     {
-      path: "/view",
-      component: () => import("../views/LoginView.vue"),
+      path: "/test",
+      component: () => import("../components/boardcomponent.vue"),
     },
   ]
 })

@@ -9,12 +9,14 @@
             class="mr-10"
             color="grey darken-1"
             size="32"
+            @click="onMain"
           ></v-avatar>
   
           <v-btn
             v-for="link in links"
             :key="link"
             text
+            @click="test"
           >
             {{ link }}
           </v-btn>
@@ -44,6 +46,14 @@ export default {
         'Updates',
     ],
     }),
+    methods: {
+      test() {
+        location.href="/test"
+      },
+      onMain(){
+        location.href="/"
+      }
+    },
 }
 </script>
 

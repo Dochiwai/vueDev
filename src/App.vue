@@ -17,7 +17,7 @@ import MainViewVue from './views/MainView.vue';
 
 export default {
   created () {
-    this.logined = true
+    //처음 로딩시 로그인 여부 확인 후 로그인드 트류트류;
   },
   data() {
     return {
