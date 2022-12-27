@@ -3,7 +3,7 @@
     <h1>Sign Up</h1>
     <div class="form-group">
         <v-text-field v-model="email" type="email" class="form-control" :rules="email_rules" placeholder="Email" required />
-        <v-text-field v-model="pw" type="password" class="form-control" :rules="rules" placeholder="Password" required />
+        <v-text-field v-model="pw" type="password" class="form-control" :rules="pw_rules" placeholder="Password" required />
         <v-text-field v-model="name" type="text" class="form-control" placeholder="name" required /> 
         <v-text-field v-model="phone" type="text" class="form-control" placeholder="phone" required /> 
 
@@ -17,19 +17,25 @@
 
 <script>
 const axios = require("axios");
+const validatePassword = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/
+const validateEmail = /^[A-Za-z0-9_\\.\\-]+@[A-Za-z0-9\\-]+\.[A-Za-z0-9\\-]+/
 export default {
   data() {
     return {
       email: '',
       email_rules: [
         v => !!v || '이메일은 필수 입력사항입니다.',
-        v => /^[a-zA-Z0-9]*$/.test(v) || '이메일은 영문+숫자만 입력 가능합니다.',
-        v => !( v && v.length >= 20) || '이메일은 20자 이상 입력할 수 없습니다.'
+        v => validateEmail.test(v) || '이메일은 형식을 지켜주세요.',
+        v => !( v && v.length < 5) || '이메일은 5자 이상 입력해주세요.',
+        v => !( v && v.length >= 30) || '이메일은 30자 이상 입력할 수 없습니다.'
       ],
       pw:'',
+      pw_rules: [
+        v => !!v || '비밀번호는 필수 입력사항입니다.',
+        v => validatePassword.test(v) || '특수문자 / 문자 / 숫자 포함 형태의 8~16자리 이내의 암호 정규식을 지켜주세요.',
+      ],
       name:'',
       phone:'',
-
     }
   },
   methods: {
@@ -37,6 +43,22 @@ export default {
       this.$emit('signUpChangeChild')
     },
     signUp(){
+      if(this.email == '' || !(validateEmail.match(this.email))){
+        alert("이메일 형식을 정확히 입력해주세요");
+        return false;
+      }
+      if(this.pw == '' || !(validatePassword.match(this.pw))){
+        alert("비밀번호 형식을 정확히 입력해주세요");
+        return false;
+      }
+      if(this.name == ''){
+        alert("이름을 입력해주세요")
+        return false;
+      }
+      if(this.phone == ''){
+        alert("핸드폰 번호를 입력해주세요")
+        return false;
+      }
       axios({
         method: "POST",
         url: '/api/signUp',

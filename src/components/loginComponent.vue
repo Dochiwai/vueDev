@@ -27,6 +27,14 @@ export default {
             this.$emit('signUpChangeChild');
         },
         login(){
+            if(this.email == ''){
+                alert("이메일을 입력해주세요")
+                return false;
+            }
+            if(this.pw === ''){
+                alert("비밀번호를 입력해주세요")
+                return false;
+            }
             axios({
             method: "POST",
             url: '/api/login',
@@ -37,7 +45,7 @@ export default {
             headers: {'Content-type': 'application/json'}
             }).then((res)=>{
                 alert("성공");
-                console.log(res.data);
+                this.$emit('loginOkChild');
             }).catch(error=>{
                 console.log("실패");
                 console.log(error);

@@ -1,4 +1,5 @@
 <template>
+  <v-container>
     <v-row>
       <sidebarVue/>
       <v-col>
@@ -6,14 +7,15 @@
           min-height="70vh"
           rounded="lg"
         >
-          
+          <!--  -->
         </v-sheet>
       </v-col>
     </v-row>
+  </v-container>
 </template>
   
 <script>
-import sidebarVue from '@/components/sidebar.vue'
+import sidebarVue from '../components/sidebar.vue'
   
 export default {
     components: {

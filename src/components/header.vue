@@ -1,5 +1,4 @@
 <template>
-  <vue-app>
     <v-app-bar
         app
         color="white"
@@ -33,7 +32,6 @@
           </v-responsive>
         </v-container>
       </v-app-bar>
-  </vue-app>
 </template>
 
 <script>

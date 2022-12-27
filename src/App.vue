@@ -5,12 +5,10 @@
       <router-link to="/make">만들장</router-link>
       <router-link to="/view">새로운거</router-link>
       <headerVue></headerVue>
-      <v-container>
-        <router-view />
-      </v-container>
+      <router-view />
     </v-main>
     <v-main v-if="logined == false">
-      <LoginViewVue/>
+      <LoginViewVue @loginOkChild="loginOk"/>
     </v-main>
   </v-app>
 </template>
@@ -27,6 +25,11 @@ export default {
   components: {
     headerVue,
     LoginViewVue
+  },
+  methods: {
+    loginOk() {
+      this.logined = true;
+    }
   },
 };
 </script>
