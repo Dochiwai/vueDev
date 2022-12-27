@@ -3,6 +3,7 @@
     <v-main>
       <v-container>
         <router-link to="/make">만들장</router-link>
+        <router-link to="/view">새로운거</router-link>
         <router-view />
       </v-container>
     </v-main>

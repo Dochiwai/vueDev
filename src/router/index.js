@@ -11,6 +11,10 @@ var router = new VueRouter({
       path: "/make",
       component: () => import("../views/SurveyMakeView.vue"),
     },
+    {
+      path: "/view",
+      component: () => import("../views/Newvue.vue"),
+    },
   ]
 })
 

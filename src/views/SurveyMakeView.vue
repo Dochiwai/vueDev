@@ -99,11 +99,11 @@
 </template>
 
 <script>
-import SurveyDoViewVue from "@/components/SurveyDoView.vue";
-import SurveyDetailSelViewVue from "../components/SurveyDetailTemplete/SurveyDetailSelView.vue";
-import SurveyDetailVSViewVue from "../components/SurveyDetailTemplete/SurveyDetailVSView.vue";
-import SurveyDetailWriteViewVue from "../components/SurveyDetailTemplete/SurveyDetailWriteView.vue";
-import SurveyViewVue from "../components/SurveyView.vue";
+import SurveyDoViewVue from "@/components/before/SurveyDoView.vue";
+import SurveyDetailSelViewVue from "../components/before/SurveyDetailTemplete/SurveyDetailSelView.vue";
+import SurveyDetailVSViewVue from "../components/before/SurveyDetailTemplete/SurveyDetailVSView.vue";
+import SurveyDetailWriteViewVue from "../components/before/SurveyDetailTemplete/SurveyDetailWriteView.vue";
+import SurveyViewVue from "../components/before/SurveyView.vue";
 const axios = require("axios");
 const headers = {
   'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
