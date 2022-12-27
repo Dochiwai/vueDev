@@ -100,9 +100,9 @@
 
 <script>
 import SurveyDoViewVue from "@/components/SurveyDoView.vue";
-import SurveyDetailSelViewVue from "../components/SurveyDetailSelView.vue";
-import SurveyDetailVSViewVue from "../components/SurveyDetailVSView.vue";
-import SurveyDetailWriteViewVue from "../components/SurveyDetailWriteView.vue";
+import SurveyDetailSelViewVue from "../components/SurveyDetailTemplete/SurveyDetailSelView.vue";
+import SurveyDetailVSViewVue from "../components/SurveyDetailTemplete/SurveyDetailVSView.vue";
+import SurveyDetailWriteViewVue from "../components/SurveyDetailTemplete/SurveyDetailWriteView.vue";
 import SurveyViewVue from "../components/SurveyView.vue";
 const axios = require("axios");
 const headers = {
@@ -257,7 +257,6 @@ export default {
     previewComplete(array) {
       this.answer = array;
       this.doingTrigger = false;
-      console.log(array);
     },
     saveSurvey() {
         var sendData = this.itemList
