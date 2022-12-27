@@ -25,9 +25,9 @@
 </template>
 
 <script>
-import SurveyDoSelViewVue from '../SurveyDoingTemplete/SurveyDoSelView.vue'
-import SurveyDoVsViewVue from '../SurveyDoingTemplete/SurveyDoVsView.vue'
-import SurveyDoWriteViewVue from '../SurveyDoingTemplete/SurveyDoWriteView.vue'
+import SurveyDoSelViewVue from './SurveyDoingTemplete/SurveyDoSelView.vue'
+import SurveyDoVsViewVue from './SurveyDoingTemplete/SurveyDoVsView.vue'
+import SurveyDoWriteViewVue from './SurveyDoingTemplete/SurveyDoWriteView.vue'
 
 export default {
     components: {

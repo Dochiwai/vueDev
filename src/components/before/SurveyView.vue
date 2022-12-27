@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import SurveySeleteViewVue from '../SurveyMaketemplete/SurveySeleteView.vue';
-import SurveyVsSelViewVue from '../SurveyMaketemplete/SurveyVsSelView.vue';
-import SurveyWriteViewVue from '../SurveyMaketemplete/SurveyWriteView.vue';
+import SurveySeleteViewVue from './SurveyMaketemplete/SurveySeleteView.vue';
+import SurveyVsSelViewVue from './SurveyMaketemplete/SurveyVsSelView.vue';
+import SurveyWriteViewVue from './SurveyMaketemplete/SurveyWriteView.vue';
 
 export default {
     props: {
