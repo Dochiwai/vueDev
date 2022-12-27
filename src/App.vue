@@ -1,11 +1,8 @@
 <template>
-  <v-app style="background-color: #eeeeee;">
+  <v-app id="inspire" style="background-color: #eeeeee;">
     <v-main v-if="logined">
-      <router-link to="/login">로그인</router-link>
-      <router-link to="/make">만들장</router-link>
-      <router-link to="/view">새로운거</router-link>
       <headerVue></headerVue>
-      <router-view />
+      <MainViewVue></MainViewVue>
     </v-main>
     <v-main v-if="logined == false">
       <LoginViewVue @loginOkChild="loginOk"/>
@@ -16,6 +13,8 @@
 <script>
 import headerVue from './components/header.vue';
 import LoginViewVue from './views/LoginView.vue';
+import MainViewVue from './views/MainView.vue';
+
 export default {
   data() {
     return {
@@ -24,11 +23,13 @@ export default {
   },
   components: {
     headerVue,
-    LoginViewVue
+    LoginViewVue,
+    MainViewVue
   },
   methods: {
     loginOk() {
       this.logined = true;
+      location.href='/view'
     }
   },
 };

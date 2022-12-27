@@ -16,7 +16,7 @@ var router = new VueRouter({
       component: () => import("../views/MainView.vue"),
     },
     {
-      path: "/login",
+      path: "/view",
       component: () => import("../views/LoginView.vue"),
     },
   ]

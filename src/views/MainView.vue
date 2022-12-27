@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="py-0 fill-height">
     <v-row>
       <sidebarVue/>
       <v-col>
@@ -18,9 +18,13 @@
 import sidebarVue from '../components/sidebar.vue'
   
 export default {
-    components: {
-      sidebarVue,
-    },
+  data() {
+    return {
+    }
+  },
+  components: {
+    sidebarVue,
+  },
 }
 </script>
 
