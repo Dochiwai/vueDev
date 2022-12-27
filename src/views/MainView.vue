@@ -1,7 +1,7 @@
 <template>
   <v-container class="py-0 fill-height">
+    <router-view></router-view>
     <v-row>
-      <sidebarVue/>
       <v-col>
         <v-sheet
           min-height="70vh"
@@ -15,15 +15,16 @@
 </template>
   
 <script>
-import sidebarVue from '../components/sidebar.vue'
   
 export default {
+  created () {
+    ;
+  },
   data() {
     return {
     }
   },
   components: {
-    sidebarVue,
   },
 }
 </script>

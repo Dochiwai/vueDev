@@ -16,6 +16,9 @@ import LoginViewVue from './views/LoginView.vue';
 import MainViewVue from './views/MainView.vue';
 
 export default {
+  created () {
+    this.logined = true
+  },
   data() {
     return {
       logined: false
@@ -29,7 +32,6 @@ export default {
   methods: {
     loginOk() {
       this.logined = true;
-      location.href='/view'
     }
   },
 };
