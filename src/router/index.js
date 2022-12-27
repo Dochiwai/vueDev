@@ -13,7 +13,11 @@ var router = new VueRouter({
     },
     {
       path: "/view",
-      component: () => import("../views/Newvue.vue"),
+      component: () => import("../views/MainView.vue"),
+    },
+    {
+      path: "/login",
+      component: () => import("../views/LoginView.vue"),
     },
   ]
 })

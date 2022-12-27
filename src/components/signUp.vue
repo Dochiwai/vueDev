@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <v-container>
     gd
-  </div>
+  </v-container>
 </template>
 
 <script>
