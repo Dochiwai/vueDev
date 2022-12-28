@@ -44,6 +44,7 @@
 </template>
 
 <script>
+const axios = require('axios')
 export default {
     data: () => ({
     }),
@@ -58,8 +59,22 @@ export default {
         location.href="/"
       },
       logout(){
-        alert("로그아웃 되었습니다.")
-        this.$store.commit('userLogout');
+        axios({
+          method: "POST",
+          url: '/api/logout',
+          data: {},
+          headers: {'Content-type': 'application/json'}
+          }).then((res)=>{
+              if(res.data.result === 200){
+                alert("안녕히가세요")
+                this.$store.commit('userLogout');
+              }else{
+                alert("문제가 발생했습니다... 다시 시도해주세요")
+              }
+          }).catch(error=>{
+              alert("문제가 생겼으니 관리자에게 문의하세요")
+          });
+        
       }
     },
 }

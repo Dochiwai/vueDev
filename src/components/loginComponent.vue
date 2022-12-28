@@ -37,8 +37,12 @@ export default {
             headers: {'Content-type': 'application/json'}
             }).then((res)=>{
                 if(res.data.result === 200){
+                    alert("어서오세요")
                     this.$store.commit('userLogined');
-                }else{
+                }else if(res.data.result === 400){
+                    alert("서버에 문제가 생겼으니 관리자에게 문의하세요")
+                }
+                else if(res.data.result === 500){
                     alert("아이디 혹은 비밀번호가 틀렸씨발")
                 }
             }).catch(error=>{

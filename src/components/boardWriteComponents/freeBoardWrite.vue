@@ -12,6 +12,12 @@
         v-model="content"
       ></textarea>
     </div>
+    <v-btn
+      text
+      @click="save"
+      >
+      저장하기
+    </v-btn>
   </v-container>
 </template>
 
