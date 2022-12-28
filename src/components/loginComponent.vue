@@ -27,14 +27,6 @@ export default {
             this.$emit('signUpChangeChild');
         },
         login(){
-            if(this.email == ''){
-                alert("이메일을 입력해주세요")
-                return false;
-            }
-            if(this.pw === ''){
-                alert("비밀번호를 입력해주세요")
-                return false;
-            }
             axios({
             method: "POST",
             url: '/api/login',
@@ -44,11 +36,13 @@ export default {
             },
             headers: {'Content-type': 'application/json'}
             }).then((res)=>{
-                alert("성공");
-                this.$store.commit('userLogined')
+                if(res.data.result === 200){
+                    this.$store.commit('userLogined');
+                }else{
+                    alert("아이디 혹은 비밀번호가 틀렸씨발")
+                }
             }).catch(error=>{
-                console.log("실패");
-                console.log(error);
+                alert("문제가 생겼으니 관리자에게 문의하세요")
             });
         }
     },
