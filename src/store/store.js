@@ -21,7 +21,6 @@ export const store = new Vuex.Store({
     },
     getters:{
         isUserLogined(state){
-            console.log(state + " !")
             return state.userLogined
         }
     }

@@ -12,8 +12,12 @@ var router = new VueRouter({
       component: () => import("../components/maincomponent.vue"),
     },
     {
-      path: "/test",
+      path: "/boardList",
       component: () => import("../components/boardcomponent.vue"),
+    },
+    {
+      path: "/myPage",
+      component: () => import("../views/MyPageView.vue"),
     },
   ]
 })

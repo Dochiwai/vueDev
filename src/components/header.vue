@@ -13,12 +13,17 @@
           ></v-avatar>
   
           <v-btn
-            v-for="link in links"
-            :key="link"
             text
-            @click="test"
+            @click="boardList"
           >
-            {{ link }}
+            Board
+          </v-btn>
+
+          <v-btn
+            text
+            @click="mypage"
+          >
+            MyPage
           </v-btn>
   
           <v-spacer></v-spacer>
@@ -39,16 +44,13 @@
 <script>
 export default {
     data: () => ({
-    links: [
-        'Dashboard',
-        'Messages',
-        'Profile',
-        'Updates',
-    ],
     }),
     methods: {
-      test() {
-        location.href="/test"
+      boardList() {
+        location.href="/boardList"
+      },
+      mypage() {
+        location.href="/myPage"
       },
       onMain(){
         location.href="/"
