@@ -7,7 +7,7 @@
         <v-text-field v-model="name" type="text" class="form-control" placeholder="name" required /> 
         <v-text-field v-model="phone" type="text" class="form-control" placeholder="phone" required /> 
 
-        <v-btn elevation="2" @click="signUp">login</v-btn>
+        <v-btn elevation="2" @click="signUp">signUp</v-btn>
         <p style="margin-top:10px;">Already have an account? 
           <a href="#" @click="signUpChange">Sign in here</a>
         </p>
@@ -43,11 +43,11 @@ export default {
       this.$emit('signUpChangeChild')
     },
     signUp(){
-      if(this.email == '' || !(validateEmail.match(this.email))){
+      if(this.email == '' || !(validateEmail.test(this.email))){
         alert("이메일 형식을 정확히 입력해주세요");
         return false;
       }
-      if(this.pw == '' || !(validatePassword.match(this.pw))){
+      if(this.pw == '' || !(validatePassword.test(this.pw))){
         alert("비밀번호 형식을 정확히 입력해주세요");
         return false;
       }
