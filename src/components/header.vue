@@ -27,7 +27,9 @@
           </v-btn>
   
           <v-spacer></v-spacer>
-  
+          <v-btn text @click="logout">
+            로그아웃
+          </v-btn>
           <v-responsive max-width="260">
             <v-text-field
               dense
@@ -54,6 +56,10 @@ export default {
       },
       onMain(){
         location.href="/"
+      },
+      logout(){
+        alert("로그아웃 되었습니다.")
+        this.$store.commit('userLogout');
       }
     },
 }

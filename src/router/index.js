@@ -14,6 +14,28 @@ var router = new VueRouter({
     {
       path: "/boardList",
       component: () => import("../components/boardcomponent.vue"),
+      children: [
+        {
+          path:'/',
+          component: () => import("../components/boardComponents/freeBoard.vue")
+        },
+        {
+          path:'F',
+          component: () => import("../components/boardComponents/freeBoard.vue")
+        },
+        {
+          path:'Y',
+          component: () => import("../components/boardComponents/yumerBoard.vue")
+        },
+        {
+          path:'U',
+          component: () => import("../components/boardComponents/unggoBoard.vue")
+        },
+        {
+          path:'WF',
+          component: () => import("../components/boardWriteComponents/freeBoardWrite.vue")
+        }
+      ],
     },
     {
       path: "/myPage",

@@ -5,7 +5,7 @@
                 <v-list-item
                 link
                 v-for="item in category"
-                v-bind:key="item"
+                v-bind:key="item.uid"
                 @click="changeBoardType(item.type)"
                 >
                     <v-list-item-content>
@@ -32,7 +32,7 @@ export default {
     },
     methods: {
         changeBoardType(value) {
-            this.$emit('changeBoardTypeChild',value);
+            location.href='/boardList/' + value
         },
         getBoardType(){
             axios({

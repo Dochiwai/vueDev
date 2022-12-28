@@ -18,6 +18,9 @@ export const store = new Vuex.Store({
         userLogined (state){
             state.userLogined = true;
         },
+        userLogout(state){
+            state.userLogined = false;
+        }
     },
     getters:{
         isUserLogined(state){

@@ -6,9 +6,7 @@
             min-height="70vh"
             rounded="lg"
             >
-                <freeBoardVue v-if="boardType == 'F'"></freeBoardVue>
-                <yumerBoardVue v-if="boardType == 'Y'"></yumerBoardVue>
-                <unggoBoardVue v-if="boardType == 'U'"></unggoBoardVue>
+                <router-view></router-view>
             </v-sheet>
         </v-col>
     </v-row>
@@ -18,6 +16,7 @@
 import freeBoardVue from './boardComponents/freeBoard.vue'
 import unggoBoardVue from './boardComponents/unggoBoard.vue'
 import yumerBoardVue from './boardComponents/yumerBoard.vue'
+import freeBoardWriteVue from './boardWriteComponents/freeBoardWrite.vue'
 import sidebarVue from './sidebar.vue'
 
 export default {
@@ -26,6 +25,7 @@ export default {
         freeBoardVue,
         yumerBoardVue,
         unggoBoardVue,
+        freeBoardWriteVue,
     },
     data() {
         return {
@@ -33,9 +33,6 @@ export default {
         }
     },
     methods: {
-        changeBoardType(value) {
-            this.boardType = value
-        }
     },
 }
 </script>

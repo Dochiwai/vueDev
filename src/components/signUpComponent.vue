@@ -70,8 +70,10 @@ export default {
         },
         headers: {'Content-type': 'application/json'}
         }).then((res)=>{
-            alert("성공");
-            console.log(res.data);
+            if(res.data.result === 200){
+              alert("회원가입 감사합니다..")
+              location.href="/"
+            }
         }).catch(error=>{
             console.log("실패");
             console.log(error);
