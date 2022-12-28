@@ -73,6 +73,8 @@ export default {
             if(res.data.result === 200){
               alert("회원가입 감사합니다..")
               location.href="/"
+            }else if (res.data.result === 500){
+              alert("이미 사용중인 아이디입니다.")
             }
         }).catch(error=>{
             console.log("실패");
