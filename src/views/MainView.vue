@@ -4,21 +4,3 @@
   </v-container>
 </template>
   
-<script>
-export default {
-  created () {
-    ;
-  },
-  data() {
-    return {
-    }
-  },
-  components: {
-    
-  },
-}
-</script>
-
-<style>
-
-</style>

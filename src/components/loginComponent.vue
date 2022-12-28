@@ -45,7 +45,7 @@ export default {
             headers: {'Content-type': 'application/json'}
             }).then((res)=>{
                 alert("성공");
-                this.$emit('loginOkChild');
+                this.$store.commit('userLogined')
             }).catch(error=>{
                 console.log("실패");
                 console.log(error);

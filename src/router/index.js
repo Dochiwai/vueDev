@@ -8,10 +8,6 @@ var router = new VueRouter({
   mode: 'history',
   routes: [
     {
-      path: "/make",
-      component: () => import("../views/SurveyMakeView.vue"),
-    },
-    {
       path: "/",
       component: () => import("../components/maincomponent.vue"),
     },

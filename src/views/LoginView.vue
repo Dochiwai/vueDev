@@ -10,7 +10,6 @@
           <div class="col-lg-6 col-md-6 col-sm-8 mx-auto">
             <loginComponentVue v-if="isSignupView == false" 
             @signUpChangeChild="sighUpChange" 
-            @loginOkChild="loginOk"
             ></loginComponentVue>
             <signUpComponentVue v-else @signUpChangeChild="sighUpChange"></signUpComponentVue>
           </div>
@@ -37,9 +36,6 @@ export default {
     sighUpChange(){
       this.isSignupView = !this.isSignupView;
     },
-    loginOk(){
-      this.$emit('loginOkChild');
-    }
   },
 }
 </script>

@@ -5,7 +5,7 @@
       <MainViewVue></MainViewVue>
     </v-main>
     <v-main v-if="logined == false">
-      <LoginViewVue @loginOkChild="loginOk"/>
+      <LoginViewVue/>
     </v-main>
   </v-app>
 </template>
@@ -16,23 +16,18 @@ import LoginViewVue from './views/LoginView.vue';
 import MainViewVue from './views/MainView.vue';
 
 export default {
-  created () {
-    //처음 로딩시 로그인 여부 확인 후 로그인드 트류트류;
+  computed: {
+    logined(){
+      return this.$store.getters.isUserLogined
+    }
   },
   data() {
-    return {
-      logined: false
-    }
+    return {};
   },
   components: {
     headerVue,
     LoginViewVue,
     MainViewVue
-  },
-  methods: {
-    loginOk() {
-      this.logined = true;
-    }
   },
 };
 </script>
