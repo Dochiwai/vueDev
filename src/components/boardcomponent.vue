@@ -1,6 +1,6 @@
 <template>
     <v-row>
-        <sidebarVue @changeBoardTypeChild="changeBoardType"></sidebarVue>
+        <sidebarVue></sidebarVue>
         <v-col>
             <v-sheet
             min-height="70vh"
