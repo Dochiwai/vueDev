@@ -20,7 +20,7 @@ export const store = new Vuex.Store({
             state.userLogined = true;
         },
         userSave(state,email){
-            state.email = email;
+            state.userEmail = email;
         },
         userLogout(state){
             state.userLogined = false;
