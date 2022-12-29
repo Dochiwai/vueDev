@@ -49,7 +49,7 @@
               title : this.title,
               content : this.content,
               category : this.type,
-              email : this.email,
+              created_user : this.email,
           },
           headers: {'Content-type': 'application/json'}
           }).then((res)=>{
