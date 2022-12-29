@@ -24,10 +24,14 @@
 <script>
   const axios = require('axios')
   export default {
+    created () {
+      this.type = this.$route.params.type
+    },
     data () {
       return {
         title : '',
         content: '',
+        type : '',
         editorConfig: {
           height: '500px',
           resize_enabled : false

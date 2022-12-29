@@ -6,20 +6,37 @@
         <thead>
           <tr>
             <th class="text-left">
-              Name
+              cnt
             </th>
             <th class="text-left">
-              Calories
+              good
+            </th>
+            <th class="text-left">
+              bad
+            </th>
+            <th class="text-left">
+              title
+            </th>
+            <th class="text-left">
+              created_user
+            </th>
+            <th class="text-left">
+              created_At
             </th>
           </tr>
         </thead>
         <tbody>
           <tr
-            v-for="item in desserts"
+            v-for="item in boardList"
             :key="item.name"
+            @click="boardDetail(item.uid)"
           >
-            <td>{{ item.name }}</td>
-            <td>{{ item.calories }}</td>
+            <td>{{ item.cnt }}</td>
+            <td>{{ item.good }}</td>
+            <td>{{ item.bad }}</td>
+            <td>{{ item.title }}</td>
+            <td>{{ item.created_user }}</td>
+            <td>{{ item.created_at }}</td>
           </tr>
         </tbody>
       </template>
@@ -36,7 +53,29 @@
 </template>
 
 <script>
+  const axios = require('axios');
   export default {
+    created () {
+      axios({
+        method: "POST",
+        url: '/api/boardList',
+        data: {
+            type : 'F' , 
+        },
+        headers: {'Content-type': 'application/json'}
+        }).then((res)=>{
+            if(res.data.result === 200){
+                this.boardList = res.result.boardList;
+            }else if(res.data.result === 400){
+                alert("서버에 문제가 생겼으니 관리자에게 문의하세요")
+            }
+            else if(res.data.result === 500){
+                alert("서버에 문제가 생겼으니 관리자에게 문의하세요")
+            }
+        }).catch(error=>{
+            alert("문제가 생겼으니 관리자에게 문의하세요")
+        });
+    },
     computed: {
       logined(){
         return this.$store.getters.isUserLogined
@@ -44,53 +83,31 @@
     },
     methods: {
       changeBoardType() {
-        location.href = '/boardList/WF'
+        this.$router.push({
+            name: "boardFreeWrite",
+            params:{type:'F'}
+        });
+      },
+      boardDetail(value){
+        this.$router.push({
+            name: "boardDetail",
+            params: {uid : value}
+        });
       }
     },
     data () {
       return {
         page: 1,
-        desserts: [
+        boardList: [
           {
-            name: 'Frozen Yogurt',
-            calories: 159,
-          },
-          {
-            name: 'Ice cream sandwich',
-            calories: 237,
-          },
-          {
-            name: 'Eclair',
-            calories: 262,
-          },
-          {
-            name: 'Cupcake',
-            calories: 305,
-          },
-          {
-            name: 'Gingerbread',
-            calories: 356,
-          },
-          {
-            name: 'Jelly bean',
-            calories: 375,
-          },
-          {
-            name: 'Lollipop',
-            calories: 392,
-          },
-          {
-            name: 'Honeycomb',
-            calories: 408,
-          },
-          {
-            name: 'Donut',
-            calories: 452,
-          },
-          {
-            name: 'KitKat',
-            calories: 518,
-          },
+            uid : 1,
+            good:0,
+            bad : 0,
+            cnt : 0,
+            title : 'gd',
+            created_user:'dd',
+            created_at : 'ff',
+          }
         ],
       }
     },

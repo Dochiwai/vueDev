@@ -16,7 +16,7 @@
 import freeBoardVue from './boardComponents/freeBoard.vue'
 import unggoBoardVue from './boardComponents/unggoBoard.vue'
 import yumerBoardVue from './boardComponents/yumerBoard.vue'
-import freeBoardWriteVue from './boardWriteComponents/freeBoardWrite.vue'
+import freeBoardWriteVue from './boardWriteComponents/boardWrite.vue'
 import sidebarVue from './sidebar.vue'
 
 export default {

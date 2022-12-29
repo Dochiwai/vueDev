@@ -32,8 +32,14 @@ var router = new VueRouter({
           component: () => import("../components/boardComponents/unggoBoard.vue")
         },
         {
-          path:'WF',
-          component: () => import("../components/boardWriteComponents/freeBoardWrite.vue")
+          name:'boardFreeWrite',
+          path:'/boardWirte',
+          component: () => import("../components/boardWriteComponents/boardWrite.vue")
+        },
+        {
+          name:'boardDetail',
+          path:'/boardView/',
+          component: () => import("../components/boardView.vue")
         }
       ],
     },
