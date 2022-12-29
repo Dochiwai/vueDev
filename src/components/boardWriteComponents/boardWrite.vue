@@ -25,13 +25,15 @@
   const axios = require('axios')
   export default {
     created () {
-      this.type = this.$route.params.type
+      this.type = this.$route.params.type,
+      this.email = this.$store.getters.getUserEmail
     },
     data () {
       return {
         title : '',
         content: '',
         type : '',
+        email : '',
         editorConfig: {
           height: '500px',
           resize_enabled : false
@@ -46,7 +48,7 @@
           data: {
               title : this.title,
               content : this.content,
-              category : 'F'
+              category : this.type,
           },
           headers: {'Content-type': 'application/json'}
           }).then((res)=>{
