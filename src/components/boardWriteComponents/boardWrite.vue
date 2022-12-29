@@ -45,7 +45,8 @@
           url: '/api/boardSave',
           data: {
               title : this.title,
-              content : this.content
+              content : this.content,
+              category : 'F'
           },
           headers: {'Content-type': 'application/json'}
           }).then((res)=>{
