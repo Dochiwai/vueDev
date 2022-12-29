@@ -50,7 +50,9 @@ export default {
     }),
     methods: {
       boardList() {
-        location.href="/boardList"
+        this.$router.push({
+            path: "freeboard",
+        }).catch(()=>{});
       },
       mypage() {
         this.$router.push({
@@ -72,6 +74,9 @@ export default {
               if(res.data.result === 200){
                 alert("안녕히가세요")
                 this.$store.commit('userLogout');
+                this.$router.push({
+                    name: "main",
+                }).catch(()=>{});
               }else{
                 alert("문제가 발생했습니다... 다시 시도해주세요")
               }

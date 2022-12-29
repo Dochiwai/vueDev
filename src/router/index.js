@@ -17,20 +17,9 @@ var router = new VueRouter({
       component: () => import("../components/boardcomponent.vue"),
       children: [
         {
-          path:'/',
+          name:"/freeboard",
+          path:"/freeboard",
           component: () => import("../components/boardComponents/freeBoard.vue")
-        },
-        {
-          path:'F',
-          component: () => import("../components/boardComponents/freeBoard.vue")
-        },
-        {
-          path:'Y',
-          component: () => import("../components/boardComponents/yumerBoard.vue")
-        },
-        {
-          path:'U',
-          component: () => import("../components/boardComponents/unggoBoard.vue")
         },
         {
           name:'boardFreeWrite',

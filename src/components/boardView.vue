@@ -42,9 +42,6 @@ export default {
     data() {
         return {
             board : {
-                uid ,
-                good,
-                bad,
             },
         }
     },
