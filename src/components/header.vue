@@ -53,10 +53,14 @@ export default {
         location.href="/boardList"
       },
       mypage() {
-        location.href="/myPage"
+        this.$router.push({
+            name: "mypage",
+        }).catch(()=>{});
       },
       onMain(){
-        location.href="/"
+        this.$router.push({
+            name: "main",
+        }).catch(()=>{});
       },
       logout(){
         axios({

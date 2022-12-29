@@ -1,7 +1,7 @@
 <template>
     <div class="card login">
         <h1>Sign In</h1>
-        <div class="form-group">
+        <div class="form-group" @keydown.enter="login">
             <v-text-field v-model="email" type="email" label="Email" required />
             <v-text-field v-model="pw" type="password" label="Password" required />
             <v-btn elevation="2" @click="login">login</v-btn>

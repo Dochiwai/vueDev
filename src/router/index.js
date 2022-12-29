@@ -8,6 +8,7 @@ var router = new VueRouter({
   mode: 'history',
   routes: [
     {
+      name:"main",
       path: "/",
       component: () => import("../components/maincomponent.vue"),
     },
@@ -44,7 +45,8 @@ var router = new VueRouter({
       ],
     },
     {
-      path: "/myPage",
+      name: "mypage",
+      path: "/mypage",
       component: () => import("../views/MyPageView.vue"),
     },
   ]
