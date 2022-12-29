@@ -19,6 +19,9 @@ export default {
   computed: {
     logined(){
       return this.$store.getters.isUserLogined
+    },
+    userEmail(){
+      return this.$store.getters.getUserEmail
     }
   },
   data() {

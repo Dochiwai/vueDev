@@ -7,24 +7,32 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
     plugins: [
         createPersistedState({
-            paths: ["userLogined"],
+            paths: ["userLogined","userEmail"],
             storage:window.sessionStorage
         })
     ],
     state :{
-        userLogined : false
+        userLogined : false,
+        userEmail : ''
     },
     mutations:{
         userLogined (state){
             state.userLogined = true;
         },
+        userSave(state,email){
+            state.email = email;
+        },
         userLogout(state){
             state.userLogined = false;
-        }
+            state.userEmail='';
+        },
     },
     getters:{
         isUserLogined(state){
             return state.userLogined
+        },
+        getUserEmail(state){
+            return state.userEmail
         }
     }
 });

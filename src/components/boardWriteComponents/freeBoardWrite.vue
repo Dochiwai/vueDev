@@ -6,11 +6,11 @@
       v-model="title"
     ></v-text-field>
     <div style="border: 1px solid; border-top:5px;">
-      <textarea 
-        placeholder="내용을 입력해주세요"
-        style="width:100%; height:470px;resize:none;"
-        v-model="content"
-      ></textarea>
+      <ckeditor 
+        v-model="content" 
+        height="500"
+        :config="editorConfig">
+      </ckeditor>
     </div>
     <v-btn
       text
@@ -27,7 +27,11 @@
     data () {
       return {
         title : '',
-        content : '',
+        content: '',
+        editorConfig: {
+          height: '500px',
+          resize_enabled : false
+        }
       }
     },
     methods: {

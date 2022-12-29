@@ -39,6 +39,7 @@ export default {
                 if(res.data.result === 200){
                     alert("어서오세요")
                     this.$store.commit('userLogined');
+                    this.$store.commit('userSave',res.data.user.email);
                 }else if(res.data.result === 400){
                     alert("서버에 문제가 생겼으니 관리자에게 문의하세요")
                 }
