@@ -31,9 +31,9 @@
             :key="item.name"
             @click="boardDetail(item.uid)"
           >
-            <td>{{ item.cnt }}</td>
-            <td>{{ item.good }}</td>
-            <td>{{ item.bad }}</td>
+            <td>{{ item.view_cnt }}</td>
+            <td></td>
+            <td></td>
             <td>{{ item.title }}</td>
             <td>{{ item.created_user }}</td>
             <td>{{ item.created_at }}</td>
@@ -65,7 +65,7 @@
         headers: {'Content-type': 'application/json'}
         }).then((res)=>{
             if(res.data.result === 200){
-                this.boardList = res.result.boardList;
+                this.boardList = res.data.boardList;
             }else if(res.data.result === 400){
                 alert("서버에 문제가 생겼으니 관리자에게 문의하세요")
             }
@@ -99,15 +99,6 @@
       return {
         page: 1,
         boardList: [
-          {
-            uid : 1,
-            good:0,
-            bad : 0,
-            cnt : 0,
-            title : 'gd',
-            created_user:'dd',
-            created_at : 'ff',
-          }
         ],
       }
     },
