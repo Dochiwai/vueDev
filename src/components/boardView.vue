@@ -28,7 +28,7 @@ export default {
             headers: {'Content-type': 'application/json'}
             }).then((res)=>{
                 if(res.data.result === 200){
-                    this.board = res.result.board;
+                    this.board = res.data.board;
                 }else if(res.data.result === 400){
                     alert("서버에 문제가 생겼으니 관리자에게 문의하세요")
                 }
