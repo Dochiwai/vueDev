@@ -1,12 +1,12 @@
 <template>
   <v-container>
-    <v-app-bar-title>1. gd</v-app-bar-title>
+    <v-app-bar-title>{{ board.uid }}. {{ board.title }}</v-app-bar-title>
     <v-content style="min-height: 500px;">
-        ㅎㅇㅎㅇ
+        {{board.content}}
     </v-content>
     <v-container style="text-align-last: center;">
-        <v-btn @click="good">good 3</v-btn>
-        <v-btn @click="bad">bad  3</v-btn>
+        <v-btn v-if="loginedUser" @click="good">good {{ board.good }}</v-btn>
+        <v-btn v-if="loginedUser" @click="bad">bad  {{ board.bad }}</v-btn>
         <v-container>
             <v-btn @click="back">뒤로가기</v-btn>
         </v-container>
@@ -43,6 +43,7 @@ export default {
         return {
             board : {
             },
+            loginedUser : this.$store.getters.getUserEmail
         }
     },
     methods: {
@@ -51,7 +52,8 @@ export default {
             method: "POST",
             url: '/api/board/' + this.board.uid  + '/good',
             data: {
-                uid : uid , 
+                uid : this.board.uid , 
+                email : this.loginedUser,
             },
             headers: {'Content-type': 'application/json'}
             }).then((res)=>{
@@ -70,7 +72,8 @@ export default {
             method: "POST",
             url: '/api/board/' + this.board.uid  + '/bad',
             data: {
-                uid : uid , 
+                uid : this.board.uid , 
+                email : this.loginedUser,
             },
             headers: {'Content-type': 'application/json'}
             }).then((res)=>{

@@ -28,7 +28,7 @@ var router = new VueRouter({
         },
         {
           name:'boardDetail',
-          path:'/boardView/',
+          path:'/boardView/:uid',
           component: () => import("../components/boardView.vue")
         }
       ],
