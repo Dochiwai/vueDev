@@ -72,6 +72,11 @@ export default {
       .then((res) => {
         if (res.data.result === 200) {
           this.boardList = res.data.boardList;
+          if((res.data.totalCnt / 10) > 0){
+            this.pageLenght = (res.data.totalCnt / 10) + 1;
+          }else{
+            this.pageLenght = (res.data.totalCnt / 10)
+          }
         } else if (res.data.result === 400) {
           alert("서버에 문제가 생겼으니 관리자에게 문의하세요");
         } else if (res.data.result === 500) {
@@ -104,6 +109,11 @@ export default {
         .then((res) => {
           if (res.data.result === 200) {
             this.boardList = res.data.boardList;
+            if((res.data.totalCnt / 10) > 0){
+              this.pageLenght = (res.data.totalCnt / 10) + 1;
+            }else{
+              this.pageLenght = (res.data.totalCnt / 10)
+            }
           } else if (res.data.result === 400) {
             alert("서버에 문제가 생겼으니 관리자에게 문의하세요");
           } else if (res.data.result === 500) {
