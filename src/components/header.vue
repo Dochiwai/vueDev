@@ -51,7 +51,7 @@ export default {
     methods: {
       boardList() {
         this.$router.push({
-            path: "freeboard",
+            path: "boardList",
         }).catch(()=>{});
       },
       mypage() {

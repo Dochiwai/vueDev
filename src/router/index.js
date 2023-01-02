@@ -13,25 +13,24 @@ var router = new VueRouter({
       component: () => import("../components/maincomponent.vue"),
     },
     {
+      name: "boardList",
       path: "/boardList",
       component: () => import("../components/boardcomponent.vue"),
-      children: [
-        {
-          name:"/freeboard",
-          path:"/freeboard",
-          component: () => import("../components/boardComponents/freeBoard.vue")
-        },
-        {
-          name:'boardFreeWrite',
-          path:'/boardWirte',
-          component: () => import("../components/boardWriteComponents/boardWrite.vue")
-        },
-        {
-          name:'boardDetail',
-          path:'/boardView/:uid',
-          component: () => import("../components/boardView.vue")
-        }
-      ],
+    },
+    {
+      name:"/test",
+      path:"/boardList/test",
+      component: () => import("../components/boardList.vue")
+    },
+    {
+      name:'boardFreeWrite',
+      path:'/boardWirte',
+      component: () => import("../components/boardWrite.vue")
+    },
+    {
+      name:'boardDetail',
+      path:'/boardView/:uid',
+      component: () => import("../components/boardView.vue")
     },
     {
       name: "mypage",

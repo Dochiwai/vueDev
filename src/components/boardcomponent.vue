@@ -1,31 +1,30 @@
 <template>
     <v-row>
-        <sidebarVue></sidebarVue>
+        <sidebar-vue 
+            @changeBoardTypeChild="changeBoardType"
+        ></sidebar-vue>
         <v-col>
             <v-sheet
             min-height="70vh"
             rounded="lg"
             >
-                <router-view></router-view>
+                <boardListVue :boardType="boardType"/>
             </v-sheet>
         </v-col>
     </v-row>
 </template>
 
 <script>
-import freeBoardVue from './boardComponents/freeBoard.vue'
-import unggoBoardVue from './boardComponents/unggoBoard.vue'
-import yumerBoardVue from './boardComponents/yumerBoard.vue'
-import freeBoardWriteVue from './boardWriteComponents/boardWrite.vue'
+import boardListVue from './boardList.vue'
 import sidebarVue from './sidebar.vue'
 
 export default {
+    created () {
+        console.log(window.performance.navigation.type)
+    },
     components: {
         sidebarVue,
-        freeBoardVue,
-        yumerBoardVue,
-        unggoBoardVue,
-        freeBoardWriteVue,
+        boardListVue,
     },
     data() {
         return {
@@ -33,6 +32,15 @@ export default {
         }
     },
     methods: {
+        changeBoardType(value){
+            if(value == 'F'){
+                this.boardType='F'
+            }else if(value == 'U'){
+                this.boardType='U'
+            }else{
+                this.boardType='S'
+            }
+        }
     },
 }
 </script>

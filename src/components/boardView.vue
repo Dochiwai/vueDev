@@ -1,17 +1,23 @@
 <template>
-  <v-container>
-    <v-app-bar-title>{{ board.uid }}. {{ board.title }}</v-app-bar-title>
-    <v-content style="min-height: 500px;">
-        {{board.content}}
-    </v-content>
-    <v-container style="text-align-last: center;">
-        <v-btn v-if="loginedUser" @click="good">good {{ board.good }}</v-btn>
-        <v-btn v-if="loginedUser" @click="bad">bad  {{ board.bad }}</v-btn>
-        <v-container>
-            <v-btn @click="back">뒤로가기</v-btn>
+    <v-sheet
+    min-height="70vh"
+    width="100%"
+    rounded="lg"
+    >
+    <v-container>
+        <v-app-bar-title>{{ board.uid }}. {{ board.title }}</v-app-bar-title>
+        <v-content style="min-height: 500px;">
+            {{board.content}}
+        </v-content>
+        <v-container style="text-align-last: center;">
+            <v-btn v-if="loginedUser" @click="good">good {{ board.good }}</v-btn>
+            <v-btn v-if="loginedUser" @click="bad">bad  {{ board.bad }}</v-btn>
+            <v-container>
+                <v-btn @click="back">뒤로가기</v-btn>
+            </v-container>
         </v-container>
     </v-container>
-  </v-container>
+  </v-sheet>
 </template>
 
 <script>
@@ -43,7 +49,7 @@ export default {
         return {
             board : {
             },
-            loginedUser : this.$store.getters.getUserEmail
+            loginedUser : this.$store.getters.getUserEmail                                                                  
         }
     },
     methods: {

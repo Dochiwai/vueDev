@@ -1,24 +1,28 @@
 <template>
-  <v-container>
-    <v-text-field
-      label="title"
-      hide-details="auto"
-      v-model="title"
-    ></v-text-field>
-    <div style="border: 1px solid; border-top:5px;">
-      <ckeditor 
-        v-model="content" 
-        height="500"
-        :config="editorConfig">
-      </ckeditor>
-    </div>
-    <v-btn
-      text
-      @click="save"
-      >
-      저장하기
-    </v-btn>
-  </v-container>
+  <v-sheet
+  min-height="70vh"
+  width="100%"
+  rounded="lg"
+  >
+      <v-text-field
+        label="title"
+        hide-details="auto"
+        v-model="title"
+      ></v-text-field>
+      <div style="border: 1px solid; border-top:5px;">
+        <ckeditor 
+          v-model="content" 
+          height="500"
+          :config="editorConfig">
+        </ckeditor>
+      </div>
+      <v-btn
+        text
+        @click="save"
+        >
+        저장하기
+      </v-btn>
+  </v-sheet>
 </template>
 
 <script>

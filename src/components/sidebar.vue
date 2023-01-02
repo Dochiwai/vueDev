@@ -32,7 +32,7 @@ export default {
     },
     methods: {
         changeBoardType(value) {
-            location.href='/boardList/' + value
+            this.$emit('changeBoardTypeChild',value)
         },
         getBoardType(){
             axios({
