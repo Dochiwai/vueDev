@@ -59,13 +59,15 @@ export default {
             url: '/api/board/' + this.board.uid  + '/good',
             data: {
                 uid : this.board.uid , 
-                email : this.loginedUser,
+                created_user : this.loginedUser,
             },
             headers: {'Content-type': 'application/json'}
             }).then((res)=>{
                 if(res.data.result === 200){
                     alert("좋아요!")
                     this.board.good += 1;
+                }if(res.data.result === 400){
+                    alert('이미 좋아요를 눌렀습니다.')
                 }else if(res.data.result === 500){
                     alert("서버에 문제가 생겼으니 관리자에게 문의하세요")
                 }
@@ -79,13 +81,15 @@ export default {
             url: '/api/board/' + this.board.uid  + '/bad',
             data: {
                 uid : this.board.uid , 
-                email : this.loginedUser,
+                created_user : this.loginedUser,
             },
             headers: {'Content-type': 'application/json'}
             }).then((res)=>{
                 if(res.data.result === 200){
                     alert("싫어요...")
                     this.board.bad += 1;
+                }else if(res.data.result === 400){
+                    alert('이미 싫어요를 누르셨습니다.')
                 }else if(res.data.result === 500){
                     alert("서버에 문제가 생겼으니 관리자에게 문의하세요")
                 }

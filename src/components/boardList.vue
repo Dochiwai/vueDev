@@ -31,7 +31,7 @@
         </tbody>
       </template>
     </v-simple-table>
-    <v-pagination v-model="page" :length="6"></v-pagination>
+    <v-pagination v-model="page" :length="pageLenght" total-visible="10"></v-pagination>
     <v-btn v-if="logined" @click="changeBoardType"> 글쓰기 </v-btn>
   </v-container>
 </template>
@@ -122,7 +122,8 @@ export default {
   },
   data() {
     return {
-      page: 1,
+      page: 4,
+      pageLenght: 10,
       boardList: [],
       headName: "자유게시판",
     };

@@ -20,7 +20,7 @@ import sidebarVue from './sidebar.vue'
 
 export default {
     created () {
-        console.log(window.performance.navigation.type)
+        
     },
     components: {
         sidebarVue,
