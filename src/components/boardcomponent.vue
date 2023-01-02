@@ -19,9 +19,6 @@ import boardListVue from './boardList.vue'
 import sidebarVue from './sidebar.vue'
 
 export default {
-    created () {
-        
-    },
     components: {
         sidebarVue,
         boardListVue,

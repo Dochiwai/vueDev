@@ -52,7 +52,7 @@
           data: {
               title : this.title,
               content : this.content,
-              category : this.type,
+              type : this.type,
               created_user : this.email,
           },
           headers: {'Content-type': 'application/json'}

@@ -4,7 +4,7 @@
             <v-list color="transparent">
                 <v-list-item
                 link
-                v-for="item in category"
+                v-for="item in type"
                 v-bind:key="item.uid"
                 @click="changeBoardType(item.type)"
                 >
@@ -27,7 +27,7 @@ export default {
     },
     data() {
         return {
-            category : [],
+            type : [],
         }
     },
     methods: {
@@ -37,11 +37,11 @@ export default {
         getBoardType(){
             axios({
             method: "POST",
-            url: '/api/boardCategory',
+            url: '/api/boardType',
             headers: {'Content-type': 'application/json'}
             }).then((res)=>{
                 if(res.data.result === 200){
-                    this.category = res.data.list;
+                    this.type = res.data.list;
                 }
             }).catch(error=>{
                 console.log("실패");

@@ -31,7 +31,7 @@
         </tbody>
       </template>
     </v-simple-table>
-    <v-pagination v-model="page" :length="pageLenght" total-visible="10"></v-pagination>
+    <v-pagination @input="pageMove" v-model="page" :length="pageLenght" total-visible="10"></v-pagination>
     <v-btn v-if="logined" @click="changeBoardType"> 글쓰기 </v-btn>
   </v-container>
 </template>
@@ -46,11 +46,26 @@ export default {
     },
   },
   created() {
+    let query = window.location.search;  
+    let param = new URLSearchParams(query);     
+    let type = param.get('type');
+    let page = param.get('page');
+
+    if( type != undefined || type != null){
+      this.boardType = type; 
+    }
+    if(page != undefined || page != null){
+      this.page = page;
+    }else{
+      this.page = 1;
+    }
+
     axios({
       method: "POST",
       url: "/api/boardList",
       data: {
         type: this.boardType,
+        page : 1,
       },
       headers: { "Content-type": "application/json" },
     })
@@ -76,6 +91,8 @@ export default {
       } else {
         this.headName = "응가";
       }
+      history.pushState(null,null,'boardList?page=1&type='+newValue); 
+      
       axios({
         method: "POST",
         url: "/api/boardList",
@@ -116,13 +133,38 @@ export default {
         params: { uid: value },
       });
     },
+    pageMove(page){
+      this.page = page;
+      axios({
+        method: "POST",
+        url: "/api/boardList",
+        data: {
+          type: this.boardType,
+          page: this.page,
+        },
+        headers: { "Content-type": "application/json" },
+      })
+        .then((res) => {
+          if (res.data.result === 200) {
+            this.boardList = res.data.boardList;
+            history.pushState(null,null,'boardList?page='+this.page+'&type='+this.boardType); 
+          } else if (res.data.result === 400) {
+            alert("서버에 문제가 생겼으니 관리자에게 문의하세요");
+          } else if (res.data.result === 500) {
+            alert("서버에 문제가 생겼으니 관리자에게 문의하세요");
+          }
+        })
+        .catch((error) => {
+          alert("문제가 생겼으니 관리자에게 문의하세요");
+        });
+    }
   },
   destroyed () {
-    console.log('gd')
+    
   },
   data() {
     return {
-      page: 4,
+      page: 1,
       pageLenght: 10,
       boardList: [],
       headName: "자유게시판",
