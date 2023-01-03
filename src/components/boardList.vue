@@ -32,12 +32,14 @@
       </template>
     </v-simple-table>
     <v-pagination @input="pageMove" v-model="page" :length="pageLenght" total-visible="10"></v-pagination>
-    <v-btn v-if="logined" @click="changeBoardType"> 글쓰기 </v-btn>
+    <btnVue v-if="logined" :text="'글쓰기'" @btnClick="changeBoardType" />
   </v-container>
 </template>
 
 <script>
+import btnVue from './btn.vue';
 const axios = require("axios");
+
 export default {
   props: {
     boardType: {
@@ -179,6 +181,9 @@ export default {
       boardList: [],
       headName: "자유게시판",
     };
+  },
+  components: {
+    btnVue,
   },
 };
 </script>
