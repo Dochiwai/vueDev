@@ -67,10 +67,10 @@ export default {
                 if(res.data.result === 200){
                     if(value == 'G'){
                         alert("좋아요!")
-                        this.board.good += 1;
+                        this.board.good = res.data.cnt.good_cnt;
                     }else{
                         alert("싫어요")
-                        this.board.bad -= 1;
+                        this.board.bad = res.data.cnt.bad_cnt;
                     }
                 }if(res.data.result === 400){
                     if(value == 'G'){
