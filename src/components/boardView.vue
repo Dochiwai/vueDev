@@ -10,8 +10,8 @@
             {{board.content}}
         </v-content>
         <v-container style="text-align-last: center;">
-            <v-btn v-if="loginedUser" @click="good">good {{ board.good }}</v-btn>
-            <v-btn v-if="loginedUser" @click="bad">bad  {{ board.bad }}</v-btn>
+            <v-btn v-if="loginedUser" @click="goodBad('G')">good {{ board.good }}</v-btn>
+            <v-btn v-if="loginedUser" @click="goodBad('B')">bad  {{ board.bad }}</v-btn>
             <v-container>
                 <v-btn @click="back">뒤로가기</v-btn>
             </v-container>
@@ -53,49 +53,37 @@ export default {
         }
     },
     methods: {
-        good() {
-            axios({
+        goodBad(value) {
+        axios({
             method: "POST",
-            url: '/api/board/' + this.board.uid  + '/good',
+            url: '/api/board/goodBad',
             data: {
-                uid : this.board.uid , 
+                mother_uid : this.board.uid , 
                 created_user : this.loginedUser,
+                good_bad : value,
             },
             headers: {'Content-type': 'application/json'}
             }).then((res)=>{
                 if(res.data.result === 200){
-                    alert("좋아요!")
-                    this.board.good += 1;
+                    if(value == 'G'){
+                        alert("좋아요!")
+                        this.board.good += 1;
+                    }else{
+                        alert("싫어요")
+                        this.board.bad -= 1;
+                    }
                 }if(res.data.result === 400){
-                    alert('이미 좋아요를 눌렀습니다.')
+                    if(value == 'G'){
+                        alert('이미 좋아요를 눌렀습니다.')
+                    }else{
+                        alert('이미 싫어요를 눌렀습니다.')
+                    }
                 }else if(res.data.result === 500){
                     alert("서버에 문제가 생겼으니 관리자에게 문의하세요")
                 }
             }).catch(error=>{
                 alert("문제가 생겼으니 관리자에게 문의하세요")
             });           
-        },
-        bad() {
-            axios({
-            method: "POST",
-            url: '/api/board/' + this.board.uid  + '/bad',
-            data: {
-                uid : this.board.uid , 
-                created_user : this.loginedUser,
-            },
-            headers: {'Content-type': 'application/json'}
-            }).then((res)=>{
-                if(res.data.result === 200){
-                    alert("싫어요...")
-                    this.board.bad += 1;
-                }else if(res.data.result === 400){
-                    alert('이미 싫어요를 누르셨습니다.')
-                }else if(res.data.result === 500){
-                    alert("서버에 문제가 생겼으니 관리자에게 문의하세요")
-                }
-            }).catch(error=>{
-                alert("문제가 생겼으니 관리자에게 문의하세요")
-            });            
         },
         back() {
             

@@ -22,8 +22,8 @@
             @click="boardDetail(item.uid)"
           >
             <td>{{ item.view_cnt }}</td>
-            <td></td>
-            <td></td>
+            <td>{{ item.good_cnt }}</td>
+            <td>{{ item.bad_cnt  }}</td>
             <td>{{ item.title }}</td>
             <td>{{ item.created_user }}</td>
             <td>{{ item.created_at }}</td>
