@@ -65,7 +65,7 @@ export default {
     const userEmail = this.$store.getters.getUserEmail;
     axios({
     method: "POST",
-    url: '/api/userSave',
+    url: '/api/getUser',
     data: {
         email : userEmail,
     },
