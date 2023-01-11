@@ -112,12 +112,10 @@ methods: {
       method: "POST",
       url: '/api/mypageSave',
       data: {
-          user: {
-            email : this.user.email,
-            password : this.user.password,
-            phone : this.user.phone,
-            name : this.user.name,
-          },
+          email : this.user.email,
+          password : this.user.password,
+          phone : this.user.phone,
+          name : this.user.name,
       },
       headers: {'Content-type': 'application/json'}
       }).then((res)=>{
