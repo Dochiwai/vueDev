@@ -95,6 +95,8 @@ export default {
         this.headName = "자유게시판";
       } else if (newValue == "U") {
         this.headName = "유머게시판";
+      } else if (newValue == "S"){
+        this.headName = "노래게시판"
       } else {
         this.headName = "응가";
       }

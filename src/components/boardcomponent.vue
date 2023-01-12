@@ -34,8 +34,10 @@ export default {
                 this.boardType='F'
             }else if(value == 'U'){
                 this.boardType='U'
-            }else{
+            }else if(value == 'S'){
                 this.boardType='S'
+            }else{
+                this.boardType="N"
             }
         }
     },

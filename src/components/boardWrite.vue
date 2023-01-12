@@ -9,6 +9,7 @@
         hide-details="auto"
         v-model="title"
       ></v-text-field>
+      <input type="file" id="file">
       <div style="border: 1px solid; border-top:5px;">
         <ckeditor 
           v-model="content" 
@@ -46,6 +47,7 @@
     },
     methods: {
       save() {
+        let file = document.getElementById('file');
         axios({
           method: "POST",
           url: '/api/boardSave',
@@ -54,6 +56,7 @@
               content : this.content,
               type : this.type,
               created_user : this.email,
+              file : file,
           },
           headers: {'Content-type': 'application/json'}
           }).then((res)=>{
