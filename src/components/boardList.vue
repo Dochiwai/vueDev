@@ -57,9 +57,9 @@ export default {
       this.boardType = type; 
     }
     if(page != undefined || page != null){
-      this.page = page;
+      this.page = parseInt(page);
     }else{
-      this.page = 1;
+      this.page = parseInt(1);
     }
 
     axios({
@@ -74,10 +74,14 @@ export default {
       .then((res) => {
         if (res.data.result === 200) {
           this.boardList = res.data.boardList;
-          if((res.data.totalCnt / 10) > 0){
-            this.pageLenght = (res.data.totalCnt / 10) + 1;
-          }else{
-            this.pageLenght = (res.data.totalCnt / 10)
+          let cnt = res.data.listCnt;
+          if(cnt < 10){
+            this.pageLenght = 1
+          }else if(cnt > 10){
+            this.pageLenght = parseInt(cnt / 10);
+            if(cnt % 10 != 0){
+              this.pageLenght = this.pageLenght + 1;
+            }
           }
         } else if (res.data.result === 400) {
           alert("서버에 문제가 생겼으니 관리자에게 문의하세요");
@@ -95,6 +99,8 @@ export default {
         this.headName = "자유게시판";
       } else if (newValue == "U") {
         this.headName = "유머게시판";
+      } else if (newValue == "S"){
+        this.headName = "노래게시판"
       } else {
         this.headName = "응가";
       }
@@ -111,10 +117,14 @@ export default {
         .then((res) => {
           if (res.data.result === 200) {
             this.boardList = res.data.boardList;
-            if((res.data.totalCnt / 10) > 0){
-              this.pageLenght = (res.data.totalCnt / 10) + 1;
-            }else{
-              this.pageLenght = (res.data.totalCnt / 10)
+            let cnt = res.data.listCnt;
+            if(cnt < 10){
+              this.pageLenght = 1
+            }else if(cnt > 10){
+              this.pageLenght = parseInt(cnt / 10);
+              if(cnt % 10 != 0){
+                this.pageLenght = this.pageLenght + 1;
+              }
             }
           } else if (res.data.result === 400) {
             alert("서버에 문제가 생겼으니 관리자에게 문의하세요");
@@ -145,7 +155,7 @@ export default {
         params: { uid: value },
       });
     },
-    pageMove(page){
+    pageMove(page){ // 이게 버튼을 눌렀을때 이동하는 부분이에요 예 맞습니다.그래서 제가 토탈페이지만 넘겨요 했던겁니다??? 토탈카운트만 넘기라고 했던겁니다 ㅖ
       this.page = page;
       axios({
         method: "POST",
@@ -177,7 +187,7 @@ export default {
   data() {
     return {
       page: 1,
-      pageLenght: 10,
+      pageLenght: 1,
       boardList: [],
       headName: "자유게시판",
     };
