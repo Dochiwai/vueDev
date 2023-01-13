@@ -53,6 +53,12 @@
           phone
         </v-app-bar-title>
         <v-text-field style="width:50%" v-model="user.phone" label="if you want change phone, input please"></v-text-field>
+        <v-app-bar-title>
+          profile
+        </v-app-bar-title>
+        <v-app-bar-title>
+        <input multiple @change="onInputImage()" type="file" id="file">
+      </v-app-bar-title>
         <v-btn @click="save">저장</v-btn>
       </v-sheet>
     </v-col>
@@ -116,6 +122,7 @@ methods: {
           password : this.user.password,
           phone : this.user.phone,
           name : this.user.name,
+          file : '',
       },
       headers: {'Content-type': 'application/json'}
       }).then((res)=>{

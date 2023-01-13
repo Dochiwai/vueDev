@@ -14,6 +14,7 @@
             <v-btn v-if="loginedUser" @click="goodBad('B')">bad  {{ board.bad }}</v-btn>
             <v-container>
                 <v-btn @click="back">뒤로가기</v-btn>
+                <v-btn @click="remove">삭제하기</v-btn>
             </v-container>
         </v-container>
     </v-container>
@@ -87,6 +88,34 @@ export default {
         },
         back() {
             
+        },
+        remove(){
+            const uid = this.$route.params.uid;
+            console.log(uid);
+            if(confirm("정말 삭제하시겠습니까??") == true){
+            axios({
+            method: "POST",
+            url: '/api/boardDelete/' + uid,
+            data: {
+                uid : uid , 
+            },
+            headers: {'Content-type': 'application/json'}
+            }).then((res)=>{
+                if(res.data.result === 200){
+                    alert("삭제되었습니다")
+                    location.href='/'
+                }else if(res.data.result === 400){
+                    alert("서버에 문제가 생겼으니 관리자에게 문의하세요")
+                }
+                else if(res.data.result === 500){
+                    alert("서버에 문제가 생겼으니 관리자에게 문의하세요")
+                }
+            }).catch(error=>{
+                alert("문제가 생겼으니 관리자에게 문의하세요")
+            });
+        }else{
+            return;
+        }
         },
     },
 }
