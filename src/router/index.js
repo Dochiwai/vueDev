@@ -37,6 +37,11 @@ var router = new VueRouter({
       path: "/mypage",
       component: () => import("../views/MyPageView.vue"),
     },
+    {
+      name: "boardModify",
+      path: "/boardModify/:uid",
+      component: () => import("../components/boardModify.vue"),
+    },
   ]
 })
 

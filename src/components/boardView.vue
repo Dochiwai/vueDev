@@ -14,6 +14,7 @@
             <v-btn v-if="loginedUser" @click="goodBad('B')">bad  {{ board.bad }}</v-btn>
             <v-container>
                 <v-btn @click="back">뒤로가기</v-btn>
+                <v-btn @click="modify">수정하기</v-btn>
                 <v-btn @click="remove">삭제하기</v-btn>
             </v-container>
         </v-container>
@@ -117,7 +118,21 @@ export default {
             return;
         }
         },
+        modify(value){
+            if(confirm("수정하시겠습니까??") == true){
+             this.$router.push({
+                   name: "boardModify",
+                   params: { uid: value },
+             }).catch(()=>{});
+            }else{
+             return;
+         }
+        },
     },
+    
+   
+    
+    
 }
 </script>
 
