@@ -62,7 +62,7 @@
           }).then((res)=>{
               if(res.data.result === 200){
                   alert("등록되었습니다.")
-                  location.href='/'
+                  location.href='/boardList'
               }else{
                   alert("문제가 생겼으니 관리자에게 문의하세요")
               }

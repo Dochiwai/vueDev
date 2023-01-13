@@ -103,7 +103,7 @@ export default {
             }).then((res)=>{
                 if(res.data.result === 200){
                     alert("삭제되었습니다")
-                    location.href='/'
+                    location.href='/boardList'
                 }else if(res.data.result === 400){
                     alert("서버에 문제가 생겼으니 관리자에게 문의하세요")
                 }
