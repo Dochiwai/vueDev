@@ -31,6 +31,7 @@
   export default {
     created () {
       const uid = this.$route.params.uid;
+      console.log(uid);
       this.email = this.$store.getters.getUserEmail
       axios({
           method: "POST",
@@ -51,7 +52,8 @@
     },
     data () {
       return {
-        board: {},
+        board: {
+        },
         editorConfig: {
           height: '500px',
           resize_enabled : false
@@ -60,15 +62,16 @@
     },
     methods: {
       save() {
+        const uid = this.$route.params.uid;
         let file = document.getElementById('file');
         axios({
           method: "POST",
-          url: '/api/modifySave/',
+          url: '/api/modifySave',
           data: {
+              uid : this.board.uid,
               title : this.board.title,
               content : this.board.content,
-              type : this.board.type,
-              created_user : this.board.email,
+              updated_at : this.board.updated_at,
               file : file,
           },
           headers: {'Content-type': 'application/json'}

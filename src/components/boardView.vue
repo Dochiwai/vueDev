@@ -14,7 +14,7 @@
             <v-btn v-if="loginedUser" @click="goodBad('B')">bad  {{ board.bad }}</v-btn>
             <v-container>
                 <v-btn @click="back">뒤로가기</v-btn>
-                <v-btn @click="modify">수정하기</v-btn>
+                <v-btn @click="modify(board.uid)">수정하기</v-btn>
                 <v-btn @click="remove">삭제하기</v-btn>
             </v-container>
         </v-container>
@@ -27,6 +27,7 @@ const axios = require("axios");
 export default {
     created () {
         const uid = this.$route.params.uid;
+        console.log(uid);
         axios({
             method: "POST",
             url: '/api/boardView/' + uid,
@@ -92,7 +93,6 @@ export default {
         },
         remove(){
             const uid = this.$route.params.uid;
-            console.log(uid);
             if(confirm("정말 삭제하시겠습니까??") == true){
             axios({
             method: "POST",
