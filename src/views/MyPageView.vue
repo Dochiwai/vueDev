@@ -46,6 +46,10 @@
           style="width:50%"
         ></v-text-field>
         <v-app-bar-title>
+          nickname
+        </v-app-bar-title>
+        <v-text-field style="width:50%" v-model="user.nickname" label="if you want change nickname, input please"></v-text-field>
+        <v-app-bar-title>
           name
         </v-app-bar-title>
         <v-text-field style="width:50%" v-model="user.name" label="if you want change name, input please"></v-text-field>
@@ -120,6 +124,7 @@ methods: {
       data: {
           email : this.user.email,
           password : this.user.password,
+          nickname : this.user.nickname,
           phone : this.user.phone,
           name : this.user.name,
           file : '',

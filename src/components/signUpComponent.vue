@@ -4,6 +4,7 @@
     <div class="form-group">
         <v-text-field v-model="email" type="email" class="form-control" :rules="email_rules" placeholder="Email" required />
         <v-text-field v-model="pw" type="password" class="form-control" :rules="pw_rules" placeholder="Password" required />
+        <v-text-field v-model="nickname" type="text" class="form-control" placeholder="nickname" required /> 
         <v-text-field v-model="name" type="text" class="form-control" placeholder="name" required /> 
         <v-text-field v-model="phone" type="text" class="form-control" placeholder="phone" required /> 
 
@@ -65,6 +66,7 @@ export default {
         data: {
             email : this.email,
             pw : this.pw,
+            nickname : this.nickname,
             name : this.name,
             phone : this.phone,
         },
