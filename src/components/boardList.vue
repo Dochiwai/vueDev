@@ -66,10 +66,9 @@ export default {
       method: "POST",
       url: "/api/boardList",
       data: {
-        type: this.boardType,
+        type : this.boardType,
         page : 1,
       },
-      headers: { "Content-type": "application/json" },
     })
       .then((res) => {
         if (res.data.result === 200) {
