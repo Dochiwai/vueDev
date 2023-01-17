@@ -19,7 +19,7 @@
               tile
               style="min-height: 330px;"
             >
-              <v-app-bar-title>자유게시판</v-app-bar-title>
+              <v-app-bar-title>베스트 자유게시판</v-app-bar-title>
               <listTableVue v-bind:list="freeList"></listTableVue>
             </v-card>
           </v-col>
@@ -35,7 +35,7 @@
               tile
               style="min-height: 330px;"
             >
-            <v-app-bar-title>유머게시판</v-app-bar-title>
+            <v-app-bar-title>베스트 유머게시판</v-app-bar-title>
             <listTableVue v-bind:list="umerList"></listTableVue>
             </v-card>
           </v-col>
