@@ -9,7 +9,7 @@
         hide-details="auto"
         v-model="title"
       ></v-text-field>
-      <input type="file" id="file">
+      <v-file-input @change="fileSelect"/>
       <div style="border: 1px solid; border-top:5px;">
         <ckeditor 
           v-model="content" 
@@ -42,23 +42,28 @@
         editorConfig: {
           height: '500px',
           resize_enabled : false
-        }
+        },
+        uploadFile : '',
       }
     },
     methods: {
+      fileSelect(file){
+        this.uploadFile = file;
+      },
       save() {
-        let file = document.getElementById('file');
+        let formData = new FormData();
+        formData.append('title',this.title);
+        formData.append('content',this.content);
+        formData.append('type',this.type);
+        formData.append('created_user',this.email);
+        formData.append('file',this.uploadFile);
         axios({
-          method: "POST",
-          url: '/api/boardSave',
-          data: {
-              title : this.title,
-              content : this.content,
-              type : this.type,
-              created_user : this.email,
-              file : file,
+          headers: {
+            "Content-Type": "multipart/form-data",
           },
-          headers: {'Content-type': 'application/json'}
+          url: '/api/boardSave',
+          method: "POST",
+          data: formData
           }).then((res)=>{
               if(res.data.result === 200){
                   alert("등록되었습니다.")
