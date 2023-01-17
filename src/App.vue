@@ -3,12 +3,7 @@
     <v-main v-if="logined">
       <headerVue></headerVue>
       <MainViewVue></MainViewVue>
-      <footer 
-        style="text-align: center; background-color: #eeeee5; border-top: 1px solid black ;"  
-      >
-        このサイトはしふんさんとひょひょんさんが一緒に作ったページであり、
-        勝手にハッキングやコピーした場合は。。どうしよう。。。。。。
-      </footer>
+      <footerVue></footerVue>
     </v-main>
     <v-main v-if="logined == false">
       <LoginViewVue/>
@@ -20,6 +15,7 @@
 import headerVue from './components/header.vue';
 import LoginViewVue from './views/LoginView.vue';
 import MainViewVue from './views/MainView.vue';
+import footerVue from './components/footer.vue';
 
 export default {
   computed: {
@@ -36,7 +32,8 @@ export default {
   components: {
     headerVue,
     LoginViewVue,
-    MainViewVue
+    MainViewVue,
+    footerVue
   },
 };
 </script>
