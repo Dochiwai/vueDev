@@ -19,12 +19,18 @@
             </v-container>
         </v-container>
     </v-container>
+    <replyComponentVue/>
   </v-sheet>
 </template>
 
 <script>
+import replyComponentVue from './replyComponent.vue';
+
 const axios = require("axios");
 export default {
+    components: {
+        replyComponentVue,
+    },
     created () {
         const uid = this.$route.params.uid;
         console.log(uid);
@@ -129,10 +135,6 @@ export default {
          }
         },
     },
-    
-   
-    
-    
 }
 </script>
 
