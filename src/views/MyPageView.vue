@@ -64,6 +64,7 @@
         <input multiple @change="onInputImage()" type="file" id="file">
       </v-app-bar-title>
         <v-btn @click="save">저장</v-btn>
+        <v-btn @click="withdrawal">회원탈퇴</v-btn>
       </v-sheet>
     </v-col>
   </v-row>
@@ -139,9 +140,38 @@ methods: {
       }).catch(error=>{
           alert("문제가 생겼으니 관리자에게 문의하세요")
       });
-  }
-},
-}
+  },
+
+  withdrawal(){
+    const userEmail = this.$store.getters.getUserEmail;
+    
+    if(confirm("정말 탈퇴하시겠습니까??") == true){
+    axios({
+      method: "POST",
+      url: '/api/withdrawal',
+      data: {
+          email : userEmail
+      },
+      headers: {'Content-type': 'application/json'}
+      }).then((res)=>{
+          if(res.data.result === 200){
+              alert("탈퇴되었습니다.")
+              this.$store.commit('userLogout');    
+              this.$router.push({
+                    name: "main",
+                }).catch(()=>{});
+          }else{
+              alert("문제가 생겼으니 관리자에게 문의하세요")
+          }
+      }).catch(error=>{
+          alert("문제가 생겼으니 관리자에게 문의하세요")
+      });
+    }else{
+      return;
+    }
+    },
+}}
+
 </script>
 
 <style>
